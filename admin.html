@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen">
+
+  <nav class="border-b border-slate-800 bg-slate-800/50 px-6 py-4 flex justify-between items-center">
+    <h1 class="text-lg font-bold text-teal-400">Portfolio Admin Boshqaruvi</h1>
+    <div class="flex items-center gap-4">
+      <a href="/" target="_blank" class="text-xs text-slate-300 hover:text-white">Saytni ko'rish ↗</a>
+      <button onclick="logout()" class="text-xs text-red-400 border border-red-500/30 px-3 py-1 rounded hover:bg-red-500/10">Chiqish</button>
+    </div>
+  </nav>
+
+  <div class="max-w-5xl mx-auto px-4 py-8 space-y-12">
+
+    <!-- Profil Boshqaruvi -->
+    <section class="bg-slate-800/40 p-6 rounded-xl border border-slate-700/50 space-y-4">
+      <h2 class="text-xl font-bold text-white">1. Profil Ma'lumotlarini Yangilash</h2>
+      <form id="profile-form" class="space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs text-slate-400 mb-1">To'liq Ism</label>
+            <input type="text" id="prof-name" class="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-sm">
+          </div>
+          <div>
+            <label class="block text-xs text-slate-400 mb-1">Mutaxassislik Unvoni</label>
+            <input type="text" id="prof-title" class="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-sm">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs text-slate-400 mb-1">Qisqacha Bio / Tarjimai hol</label>
+          <textarea id="prof-bio" rows="3" class="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-sm"></textarea>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <label class="block text-xs text-slate-400 mb-1">Avatar Rasm URL</label>
+            <input type="text" id="prof-avatar" class="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-sm">
+          </div>
+          <div>
+            <label class="block text-xs text-slate-400 mb-1">Telegram URL</label>
+            <input type="text" id="prof-tg" class="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-sm">
+          </div>
+          <div>
+            <label class="block text-xs text-slate-400 mb-1">GitHub URL</label>
+            <input type="text" id="prof-gh" class="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-sm">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs text-slate-400 mb-1">Ko'nikmalar (vergul bilan ajrating)</label>
+          <input type="text" id="prof-skills" placeholder="Node.js, Express, MongoDB, Tailwind" class="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-sm">
+        </div>
+
+        <div class="grid grid-cols-3 gap-4 pt-2">
+          <div>
+            <label class="block text-xs text-slate-400 mb-1">Loyihalar Soni</label>
+            <input type="number" id="prof-stat-proj" class="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-sm">
+          </div>
+          <div>
+            <label class="block text-xs text-slate-400 mb-1">Tajriba Yili</label>
+            <input type="number" id="prof-stat-exp" class="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-sm">
+          </div>
+          <div>
+            <label class="block text-xs text-slate-400 mb-1">Mijozlar/Natija</label>
+            <input type="number" id="prof-stat-cli" class="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-sm">
+          </div>
+        </div>
+
+        <button type="submit" class="bg-teal-500 hover:bg-teal-600 text-slate-950 font-bold px-4 py-2 rounded text-sm">
+          Profilni Saqlash
+        </button>
+      </form>
+    </section>
+
+    <!-- Yangi Loyiha Qo'shish -->
+    <section class="bg-slate-800/40 p-6 rounded-xl border border-slate-700/50 space-y-4">
+      <h2 class="text-xl font-bold text-white">2. Yangi Loyiha / Sayt Qo'shish</h2>
+      <form id="project-form" class="space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs text-slate-400 mb-1">Loyiha Nomi</label>
+            <input type="text" id="proj-title" required class="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-sm">
+          </div>
+          <div>
+            <label class="block text-xs text-slate-400 mb-1">Kategoriya</label>
+            <select id="proj-category" class="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-sm">
+              <option value="Web App">Web App</option>
+              <option value="Telegram Bot">Telegram Bot</option>
+              <option value="API/Backend">API/Backend</option>
+              <option value="Other">Boshqa</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs text-slate-400 mb-1">Tavsif</label>
+          <textarea id="proj-desc" required rows="2" class="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-sm"></textarea>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <label class="block text-xs text-slate-400 mb-1">Rasm URL</label>
+            <input type="text" id="proj-image" required placeholder="https://..." class="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-sm">
+          </div>
+          <div>
+            <label class="block text-xs text-slate-400 mb-1">Live Demo Link</label>
+            <input type="text" id="proj-demo" class="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-sm">
+          </div>
+          <div>
+            <label class="block text-xs text-slate-400 mb-1">GitHub Link</label>
+            <input type="text" id="proj-github" class="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-sm">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs text-slate-400 mb-1">Texnologiyalar (vergul bilan)</label>
+          <input type="text" id="proj-tags" placeholder="Node.js, Express, Tailwind" class="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-sm">
+        </div>
+
+        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold px-4 py-2 rounded text-sm">
+          Loyiha Qo'shish
+        </button>
+      </form>
+    </section>
+
+    <!-- Yangi Natija Qo'shish -->
+    <section class="bg-slate-800/40 p-6 rounded-xl border border-slate-700/50 space-y-4">
+      <h2 class="text-xl font-bold text-white">3. Yangi Natija / Yutuq Qo'shish</h2>
+      <form id="achievement-form" class="space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <label class="block text-xs text-slate-400 mb-1">Natija Sarlavhasi</label>
+            <input type="text" id="ach-title" required class="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-sm">
+          </div>
+          <div>
+            <label class="block text-xs text-slate-400 mb-1">Sana (masalan: Sentabr 2026)</label>
+            <input type="text" id="ach-date" required class="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-sm">
+          </div>
+          <div>
+            <label class="block text-xs text-slate-400 mb-1">Ikonka (Emoji)</label>
+            <input type="text" id="ach-icon" value="🏆" class="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-sm">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs text-slate-400 mb-1">Tavsif va Metrika</label>
+          <input type="text" id="ach-desc" required placeholder="Render.com & UptimeRobot orqali 99.9% uptime" class="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-sm">
+        </div>
+
+        <button type="submit" class="bg-purple-500 hover:bg-purple-600 text-white font-bold px-4 py-2 rounded text-sm">
+          Natija Qo'shish
+        </button>
+      </form>
+    </section>
+
+  </div>
+
+  <script src="/js/admin.js"></script>
+</body>
+</html>

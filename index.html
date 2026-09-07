@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shaxsiy Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen font-sans">
+
+  <!-- Header / Navigation -->
+  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold bg-gradient-to-r from-teal-400 to-blue-500 bg-clip-text text-transparent" id="header-name">
+        Portfolio
+      </h1>
+      <nav class="flex gap-6 text-sm text-slate-300">
+        <a href="#about" class="hover:text-teal-400 transition">Haqimda</a>
+        <a href="#projects" class="hover:text-teal-400 transition">Loyihalar</a>
+        <a href="#achievements" class="hover:text-teal-400 transition">Natijalar</a>
+        <a href="/login" class="text-teal-400 border border-teal-400/30 px-3 py-1 rounded hover:bg-teal-400/10 transition">Admin Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="exportable-area" class="max-w-6xl mx-auto px-4 py-10 space-y-16">
+    
+    <!-- Hero / About Section -->
+    <section id="about" class="flex flex-col md:flex-row items-center gap-8 bg-slate-800/50 p-8 rounded-2xl border border-slate-700/50">
+      <img id="profile-avatar" src="https://via.placeholder.com/150" alt="Avatar" class="w-36 h-36 rounded-full object-cover border-4 border-teal-500/30">
+      <div class="space-y-4 text-center md:text-left flex-1">
+        <div>
+          <h2 id="profile-name" class="text-3xl font-bold text-white">Yuklanmoqda...</h2>
+          <p id="profile-title" class="text-teal-400 font-medium">...</p>
+        </div>
+        <p id="profile-bio" class="text-slate-300 leading-relaxed max-w-2xl">...</p>
+        
+        <!-- Skills -->
+        <div id="profile-skills" class="flex flex-wrap gap-2 justify-center md:justify-start">
+          <!-- Dinamik skill badge'lar -->
+        </div>
+
+        <div class="flex gap-4 justify-center md:justify-start pt-2">
+          <a id="link-telegram" href="#" target="_blank" class="px-4 py-2 bg-blue-600/20 text-blue-400 border border-blue-500/30 rounded-lg hover:bg-blue-600/30 text-sm font-medium">Telegram</a>
+          <a id="link-github" href="#" target="_blank" class="px-4 py-2 bg-slate-700/50 text-slate-200 border border-slate-600/50 rounded-lg hover:bg-slate-700 text-sm font-medium">GitHub</a>
+          <button onclick="exportPortfolioAsPNG()" class="px-4 py-2 bg-teal-500/20 text-teal-300 border border-teal-500/30 rounded-lg hover:bg-teal-500/30 text-sm font-medium flex items-center gap-2">
+            📸 Card qilish (PNG)
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-slate-800/40 p-6 rounded-xl border border-slate-700/50 text-center">
+        <div id="stat-projects" class="text-3xl font-extrabold text-teal-400">0</div>
+        <div class="text-slate-400 text-sm mt-1">Bajarilgan Loyihalar</div>
+      </div>
+      <div class="bg-slate-800/40 p-6 rounded-xl border border-slate-700/50 text-center">
+        <div id="stat-experience" class="text-3xl font-extrabold text-blue-400">0</div>
+        <div class="text-slate-400 text-sm mt-1">Yillik Tajriba</div>
+      </div>
+      <div class="bg-slate-800/40 p-6 rounded-xl border border-slate-700/50 text-center">
+        <div id="stat-clients" class="text-3xl font-extrabold text-purple-400">0</div>
+        <div class="text-slate-400 text-sm mt-1">Muvaffaqiyatli Natijalar</div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="space-y-6">
+      <h3 class="text-2xl font-bold text-white border-b border-slate-800 pb-3 flex items-center gap-2">
+        <span>🚀</span> Qilingan Saytlar va Loyihalar
+      </h3>
+      <div id="projects-list" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Dinamik loyihalar -->
+      </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="space-y-6">
+      <h3 class="text-2xl font-bold text-white border-b border-slate-800 pb-3 flex items-center gap-2">
+        <span>🏆</span> Natijalar va Yutuqlar
+      </h3>
+      <div id="achievements-list" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Dinamik natijalar -->
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="text-center py-8 text-slate-500 text-sm border-t border-slate-800">
+    <p>© 2026 Shaxsiy Portfolio Platformasi. Node.js & Express orqali ishlaydi.</p>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>
